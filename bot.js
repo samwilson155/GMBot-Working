@@ -259,7 +259,7 @@ function postMessage4() {
   botReq.end(JSON.stringify(body));
 }
 
-function postMessage5() {
+/*function postMessage5() {
   var botResponse, options, body, botReq;
 
   const request = require('request');
@@ -276,7 +276,11 @@ function postMessage5() {
 		weatherinfo = JSON.parse(body2);
 		message = `Current Temperature: ${weatherinfo.main.temp} degrees in ${weatherinfo.name} \nCurrent Conditions: ${weatherinfo.weather[0].description} (${weatherinfo.weather[1].description}) \nTodays low temperature: ${weatherinfo.main.temp_min} \nTodays high temperature: ${weatherinfo.main.temp_max} \nWind Speed: ${weatherinfo.wind.speed} MPH`
 		
-	    botResponse = message
+		
+	}
+  });
+
+  botResponse = message
   
   options = {
     hostname: 'api.groupme.com',
@@ -305,14 +309,9 @@ function postMessage5() {
   botReq.on('timeout', function(err) {
     console.log('timeout posting message '  + JSON.stringify(err));
   });
-  botReq.end(JSON.stringify(body));	
-		
-	}
-  });
-
-
+  botReq.end(JSON.stringify(body));
 }
-
+*/
 
 
 exports.respond = respond;
