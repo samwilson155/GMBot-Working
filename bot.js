@@ -11,6 +11,7 @@ function respond() {
 	  botRegex3 = /\bpa\b/;
 	  botRegex4 = /\bPA Minerva\b/;
 	  botRegex5 = /\blol\b/;
+	  botRegex6 = /\bLol\b/;
 	  
 
   if(request.text && botRegex.test(request.text)) {
@@ -54,6 +55,16 @@ function respond() {
   }
   
     if(request.text && botRegex5.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage3();
+    this.res.end();
+  } else {
+    console.log("don't care");
+    this.res.writeHead(200);
+    this.res.end();
+  }
+  
+    if(request.text && botRegex6.test(request.text)) {
     this.res.writeHead(200);
     postMessage3();
     this.res.end();
