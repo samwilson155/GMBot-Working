@@ -135,7 +135,7 @@ function postMessage() {
 function postMessage2() {
   var botResponse, options, body, botReq;
 
-  botResponse = 'Thank you for throwing a phi alpha my way.'.concat(cool());
+  botResponse = 'Thank you for throwing a phi alpha my way.';
 
   options = {
     hostname: 'api.groupme.com',
@@ -170,7 +170,7 @@ function postMessage2() {
 function postMessage3() {
   var botResponse, options, body, botReq;
 
-  botResponse = 'lmao what yall laughin at?';
+  botResponse = 'lmao what are yall laughin at?';
 
   options = {
     hostname: 'api.groupme.com',
