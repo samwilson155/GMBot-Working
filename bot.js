@@ -259,7 +259,7 @@ function postMessage4() {
   botReq.end(JSON.stringify(body));
 }
 
-/*function postMessage5() {
+function postMessage5() {
   var botResponse, options, body, botReq;
 
   const request = require('request');
@@ -278,7 +278,7 @@ function postMessage4() {
 		
 		
 	}
-  });
+  
 
   botResponse = message
   
@@ -310,8 +310,9 @@ function postMessage4() {
     console.log('timeout posting message '  + JSON.stringify(err));
   });
   botReq.end(JSON.stringify(body));
+  });
 }
-*/
+
 
 
 exports.respond = respond;
