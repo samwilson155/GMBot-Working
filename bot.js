@@ -75,6 +75,16 @@ function respond() {
     this.res.writeHead(200);
     this.res.end();
   }
+  
+    if(request.text && botRegex7.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage3();
+    this.res.end();
+  } else {
+    console.log("don't care");
+    this.res.writeHead(200);
+    this.res.end();
+  }
 
     if(request.text && botRegex8.test(request.text)) {
     this.res.writeHead(200);
@@ -90,7 +100,7 @@ function respond() {
 function postMessage() {
   var botResponse, options, body, botReq;
 
-  botResponse = 'Phi Alpha to the brother who just dished the jawn above! '.concat(cool());
+  botResponse = 'Phi Alpha to tHe brother who just dished a jawn above! Also, le bo nasty!'.concat(cool());
 
   options = {
     hostname: 'api.groupme.com',
@@ -125,7 +135,7 @@ function postMessage() {
 function postMessage2() {
   var botResponse, options, body, botReq;
 
-  botResponse = 'Thank you for the phi alpha. Throwin this boy in the repository now!';
+  botResponse = 'Thank you for throwing a phi alpha my way.'.concat(cool());
 
   options = {
     hostname: 'api.groupme.com',
