@@ -4,6 +4,13 @@ var cool = require('cool-ascii-faces');
 
 var botID = process.env.BOT_ID;
 
+const request = require('request');
+const argv = require('yargs').argv;
+
+let apiKey = '3c7e805f6e8a60d1b01923fee9f22390'
+let city = argv.c || 'indianapolis';
+let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${'3c7e805f6e8a60d1b01923fee9f22390'}`
+
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /\bPA\b/;
@@ -14,6 +21,7 @@ function respond() {
 	  botRegex6 = /\bLol\b/;
 	  botRegex7 = /\bthe\b/;
 	  botRegex8 = /\bThe\b/;
+	  botRegex9 = /\bWeather\b/;
 	  
 
   if(request.text && botRegex.test(request.text)) {
@@ -89,6 +97,16 @@ function respond() {
     if(request.text && botRegex8.test(request.text)) {
     this.res.writeHead(200);
     postMessage4();
+    this.res.end();
+  } else {
+    console.log("don't care");
+    this.res.writeHead(200);
+    this.res.end();
+  }
+  
+    if(request.text && botRegex9.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage5();
     this.res.end();
   } else {
     console.log("don't care");
@@ -207,6 +225,48 @@ function postMessage4() {
 
   botResponse = cool();
 
+  options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/bots/post',
+    method: 'POST'
+  };
+
+  body = {
+    "bot_id" : botID,
+    "text" : botResponse
+  };
+
+  console.log('sending ' + botResponse + ' to ' + botID);
+
+  botReq = HTTPS.request(options, function(res) {
+      if(res.statusCode == 202) {
+        //neat
+      } else {
+        console.log('rejecting bad status code ' + res.statusCode);
+      }
+  });
+
+  botReq.on('error', function(err) {
+    console.log('error posting message '  + JSON.stringify(err));
+  });
+  botReq.on('timeout', function(err) {
+    console.log('timeout posting message '  + JSON.stringify(err));
+  });
+  botReq.end(JSON.stringify(body));
+}
+
+function postMessage5() {
+  var botResponse, options, body, botReq;
+
+  request(url, function(err, response, body2) {
+	if(err){
+		console.log('error:', error);
+	} else {
+		let weatherinfo = JSON.parse(body2);
+		let botResponse = `Current Temperature: ${weatherinfo.main.temp} degrees in ${weatherinfo.name} \nCurrent Conditions: ${weatherinfo.weather[0].description} (${weatherinfo.weather[1].description}) \nTodays low temperature: ${weatherinfo.main.temp_min} \nTodays high temperature: ${weatherinfo.main.temp_max} \nWind Speed: ${weatherinfo.wind.speed} MPH`
+
+	}
+});
   options = {
     hostname: 'api.groupme.com',
     path: '/v3/bots/post',
