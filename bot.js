@@ -263,11 +263,13 @@ function postMessage5() {
 		console.log('error:', error);
 	} else {
 		weatherinfo = JSON.parse(body2);
-		botResponse = `Current Temperature: ${weatherinfo.main.temp} degrees in ${weatherinfo.name} \nCurrent Conditions: ${weatherinfo.weather[0].description} (${weatherinfo.weather[1].description}) \nTodays low temperature: ${weatherinfo.main.temp_min} \nTodays high temperature: ${weatherinfo.main.temp_max} \nWind Speed: ${weatherinfo.wind.speed} MPH`
+		message = `Current Temperature: ${weatherinfo.main.temp} degrees in ${weatherinfo.name} \nCurrent Conditions: ${weatherinfo.weather[0].description} (${weatherinfo.weather[1].description}) \nTodays low temperature: ${weatherinfo.main.temp_min} \nTodays high temperature: ${weatherinfo.main.temp_max} \nWind Speed: ${weatherinfo.wind.speed} MPH`
 
 	}
   });
 
+  botResponse = message
+  
   options = {
     hostname: 'api.groupme.com',
     path: '/v3/bots/post',
