@@ -1,6 +1,8 @@
 var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
 var PACount = 0
+var connectionString = "postgres://glhmxjmtxirxos:4954ebea7ef7a5c4574e8b1fc614cbfa12abd28d5d4e0ea1aad0e109fb8a2cd3@ec2-23-23-242-163.compute-1.amazonaws.com:5432/dfgomu37ja2rrs
+
 
 var botID = process.env.BOT_ID;
 
@@ -78,7 +80,7 @@ function respond() {
 function postMessage() {
   var botResponse, options, body, botReq;
 
-  botResponse = 'The above Phi Alpha has been added to the jawn repository.';
+  botResponse = 'Phi Alpha to the brother who just dished the jawn above! ' + cool();
 
   options = {
     hostname: 'api.groupme.com',
