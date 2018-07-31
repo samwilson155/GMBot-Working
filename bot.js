@@ -255,7 +255,7 @@ function postMessage5() {
   const argv = require('yargs').argv;
 
   let apiKey = '3c7e805f6e8a60d1b01923fee9f22390'
-  let city = argv.c || 'indianapolis';
+  let city = 'indianapolis';
   let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${'3c7e805f6e8a60d1b01923fee9f22390'}`
   
   request(url, function(err, response, body2) {
@@ -266,6 +266,7 @@ function postMessage5() {
 		botResponse = `Current Temperature: ${weatherinfo.main.temp} degrees in ${weatherinfo.name} \nCurrent Conditions: ${weatherinfo.weather[0].description} (${weatherinfo.weather[1].description}) \nTodays low temperature: ${weatherinfo.main.temp_min} \nTodays high temperature: ${weatherinfo.main.temp_max} \nWind Speed: ${weatherinfo.wind.speed} MPH`
 
 	}
+  });
 
   options = {
     hostname: 'api.groupme.com',
@@ -295,7 +296,6 @@ function postMessage5() {
     console.log('timeout posting message '  + JSON.stringify(err));
   });
   botReq.end(JSON.stringify(body));
-});
 }
 
 
