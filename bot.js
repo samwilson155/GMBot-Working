@@ -248,7 +248,7 @@ function postMessage4() {
   botReq.end(JSON.stringify(body));
 }
 
-function postMessage5() {
+/*function postMessage5() {
   var botResponse, options, body, botReq;
 
   const request = require('request');
@@ -299,7 +299,7 @@ function postMessage5() {
   });
   botReq.end(JSON.stringify(body));
 }
-
+*/
 
 
 exports.respond = respond;
