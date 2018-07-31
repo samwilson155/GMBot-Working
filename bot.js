@@ -266,7 +266,7 @@ function postMessage5() {
 		botResponse = `Current Temperature: ${weatherinfo.main.temp} degrees in ${weatherinfo.name} \nCurrent Conditions: ${weatherinfo.weather[0].description} (${weatherinfo.weather[1].description}) \nTodays low temperature: ${weatherinfo.main.temp_min} \nTodays high temperature: ${weatherinfo.main.temp_max} \nWind Speed: ${weatherinfo.wind.speed} MPH`
 
 	}
-});
+
   options = {
     hostname: 'api.groupme.com',
     path: '/v3/bots/post',
@@ -295,6 +295,7 @@ function postMessage5() {
     console.log('timeout posting message '  + JSON.stringify(err));
   });
   botReq.end(JSON.stringify(body));
+});
 }
 
 
