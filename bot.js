@@ -12,6 +12,7 @@ function respond() {
 	  botRegex4 = /\bPA Minerva\b/;
 	  botRegex5 = /\blol\b/;
 	  botRegex6 = /\bLol\b/;
+	  botRegex10 = /\whaha\w/;
 	  botRegex7 = /\bthe\b/;
 	  botRegex8 = /\bThe\b/;
 	  botRegex9 = /\bWeather\b/;
@@ -76,6 +77,16 @@ function respond() {
     this.res.writeHead(200);
     this.res.end();
   }
+  
+    if(request.text && botRegex10.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage3();
+    this.res.end();
+  } else {
+    console.log("don't care");
+    this.res.writeHead(200);
+    this.res.end();
+  }  
   
     if(request.text && botRegex7.test(request.text)) {
     this.res.writeHead(200);
@@ -264,7 +275,8 @@ function postMessage4() {
 	} else {
 		weatherinfo = JSON.parse(body2);
 		message = `Current Temperature: ${weatherinfo.main.temp} degrees in ${weatherinfo.name} \nCurrent Conditions: ${weatherinfo.weather[0].description} (${weatherinfo.weather[1].description}) \nTodays low temperature: ${weatherinfo.main.temp_min} \nTodays high temperature: ${weatherinfo.main.temp_max} \nWind Speed: ${weatherinfo.wind.speed} MPH`
-
+		
+		
 	}
   });
 
