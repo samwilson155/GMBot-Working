@@ -259,6 +259,7 @@ function postMessage4() {
   botReq.end(JSON.stringify(body));
 }
 
+/*
 function postMessage5() {
   
 
@@ -311,6 +312,6 @@ function postMessage5() {
 	  });
 	}
 }
-
+*/
 
 exports.respond = respond;
