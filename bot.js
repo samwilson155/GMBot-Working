@@ -4,13 +4,6 @@ var cool = require('cool-ascii-faces');
 
 var botID = process.env.BOT_ID;
 
-const request = require('request');
-const argv = require('yargs').argv;
-
-let apiKey = '3c7e805f6e8a60d1b01923fee9f22390'
-let city = argv.c || 'indianapolis';
-let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${'3c7e805f6e8a60d1b01923fee9f22390'}`
-
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /\bPA\b/;
@@ -258,6 +251,13 @@ function postMessage4() {
 function postMessage5() {
   var botResponse, options, body, botReq;
 
+  const request = require('request');
+  const argv = require('yargs').argv;
+
+  let apiKey = '3c7e805f6e8a60d1b01923fee9f22390'
+  let city = argv.c || 'indianapolis';
+  let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${'3c7e805f6e8a60d1b01923fee9f22390'}`
+  
   request(url, function(err, response, body2) {
 	if(err){
 		console.log('error:', error);
