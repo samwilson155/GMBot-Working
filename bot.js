@@ -76,16 +76,6 @@ function respond() {
     this.res.end();
   }
 
-    if(request.text && botRegex7.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage4();
-    this.res.end();
-  } else {
-    console.log("don't care");
-    this.res.writeHead(200);
-    this.res.end();
-  }
-
     if(request.text && botRegex8.test(request.text)) {
     this.res.writeHead(200);
     postMessage4();
