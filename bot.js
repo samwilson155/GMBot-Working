@@ -1,6 +1,8 @@
 var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
 var botID = process.env.BOT_ID;
+var giphy = require('giphy-random');
+var giphy = new giphy({ apiKey: 'B0ObgzBq9J1TGVUy2DiQT3JR1XEXhwSj' });
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
@@ -14,7 +16,7 @@ function respond() {
 	  botRegex7 = /\bthe\b/;
 	  botRegex8 = /\bThe\b/;
 	  botRegex9 = /\@Minerva\b/;
-	  botRegex11 = /\bWeather\b/;
+	  botRegex11 = /\bgif\b/;
 	  
 
   if(request.text && botRegex.test(request.text)) {
@@ -117,7 +119,7 @@ function respond() {
     this.res.end();
   }
   
-/*    if(request.text && botRegex11.test(request.text)) {
+    if(request.text && botRegex11.test(request.text)) {
     this.res.writeHead(200);
     postMessage6();
     this.res.end();
@@ -126,7 +128,7 @@ function respond() {
     this.res.writeHead(200);
     this.res.end();
   }
-*/
+
 }
 
 function postMessage() {
@@ -237,7 +239,7 @@ function postMessage3() {
 function postMessage4() {
   var botResponse, options, body, botReq;
 
-  botResponse = cool.faceStream();
+  botResponse = cool();
 
   options = {
     hostname: 'api.groupme.com',
@@ -304,23 +306,10 @@ function postMessage5() {
   botReq.end(JSON.stringify(body));
 }
 
-/*function postMessage6() {
+function postMessage6() {
   var botResponse, options, body, botReq;
 
-  const request2 = require('request');
-
-  let url = 'http://api.openweathermap.org/data/2.5/weather?q=Indianapolis&units=imperial&appid=3c7e805f6e8a60d1b01923fee9f22390'
-
-  request2(url, function(err2, response2, body2) {
-	  if(err2){
-		  console.log('error:', error);
-	  } else {
-		  let weatherinfo = JSON.parse(body2);
-
-		  var botResponse = "Current Temperature: " + weatherinfo.main.temp + " degrees in " + weatherinfo.name + "\nCurrent Conditions: " + weatherinfo.weather[0].main + "(" + weatherinfo.weather[0].description + ")\nTodays low temperature: " + weatherinfo.main.temp_min + "\nTodays high temperature: " + weatherinfo.main.temp_max + "\nWind Speed: " + weatherinfo.wind.speed + " MPH"
-		  	
-	  }
-  });
+  botResponse = giphy.get();
 
   options = {
     hostname: 'api.groupme.com',
@@ -351,6 +340,6 @@ function postMessage5() {
   });
   botReq.end(JSON.stringify(body));
 }
-*/
+
 
 exports.respond = respond;
