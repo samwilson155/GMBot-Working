@@ -260,7 +260,7 @@ function postMessage4() {
 function postMessage5() {
   var botResponse, options, body, botReq;
 
-  botResponse = `Don't mention me hoe. Ill scrape you`;
+  botResponse = 'Don\'t mention me hoe. Ill scrape you';
 
   options = {
     hostname: 'api.groupme.com',
