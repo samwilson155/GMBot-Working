@@ -237,7 +237,7 @@ function postMessage3() {
 function postMessage4() {
   var botResponse, options, body, botReq;
 
-  botResponse = cool();
+  botResponse = cool.faceStream();
 
   options = {
     hostname: 'api.groupme.com',
