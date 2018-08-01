@@ -2,27 +2,6 @@ var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
 var botID = process.env.BOT_ID;
 
-
-const request = require('request');
-const argv = require('yargs').argv;
-
-let apiKey = '3c7e805f6e8a60d1b01923fee9f22390'
-let city = argv.c || 'indianapolis';
-let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${'3c7e805f6e8a60d1b01923fee9f22390'}`
-
-request(url, function(err2, response2, body2) {
-	if(err2){
-		console.log('error:', error);
-	} else {
-		let weatherinfo = JSON.parse(body2);
-
-		message = `Current Temperature: ${weatherinfo.main.temp} degrees in ${weatherinfo.name} \nCurrent Conditions: ${weatherinfo.weather[0].main} (${weatherinfo.weather[0].description}) \nTodays low temperature: ${weatherinfo.main.temp_min} \nTodays high temperature: ${weatherinfo.main.temp_max} \nWind Speed: ${weatherinfo.wind.speed} MPH`
-
-		return weathermessage
-	}
-});
-
-
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /\bPA\b/;
@@ -277,42 +256,5 @@ function postMessage4() {
   });
   botReq.end(JSON.stringify(body));
 }
-
-function postMessage5() {
-  var botResponse, options, body, botReq;
-
-  botResponse = weathermessage;
-
-  options = {
-    hostname: 'api.groupme.com',
-    path: '/v3/bots/post',
-    method: 'POST'
-  };
-
-  body = {
-    "bot_id" : botID,
-    "text" : botResponse
-  };
-
-  console.log('sending ' + botResponse + ' to ' + botID);
-
-  botReq = HTTPS.request(options, function(res) {
-      if(res.statusCode == 202) {
-        //neat
-      } else {
-        console.log('rejecting bad status code ' + res.statusCode);
-      }
-  });
-
-  botReq.on('error', function(err) {
-    console.log('error posting message '  + JSON.stringify(err));
-  });
-  botReq.on('timeout', function(err) {
-    console.log('timeout posting message '  + JSON.stringify(err));
-  });
-  botReq.end(JSON.stringify(body));
-}
-
-
 
 exports.respond = respond;
