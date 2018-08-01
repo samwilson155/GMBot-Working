@@ -306,18 +306,18 @@ function postMessage5() {
 function postMessage6() {
   var botResponse, options, body, botReq;
 
-  const request = require('request');
+  const request2 = require('request');
 
   let url = 'http://api.openweathermap.org/data/2.5/weather?q=Indianapolis&units=imperial&appid=3c7e805f6e8a60d1b01923fee9f22390'
 
-  request(url, function(err2, response2, body2) {
+  request2(url, function(err2, response2, body2) {
 	  if(err2){
 		  console.log('error:', error);
 	  } else {
 		  let weatherinfo = JSON.parse(body2);
 
-		  botResponse = "Current Temperature: " + weatherinfo.main.temp + " degrees in " + weatherinfo.name + "\nCurrent Conditions: " + weatherinfo.weather[0].main + "(" + weatherinfo.weather[0].description + ")\nTodays low temperature: " + weatherinfo.main.temp_min + "\nTodays high temperature: " + weatherinfo.main.temp_max + "\nWind Speed: " + weatherinfo.wind.speed + " MPH"
-
+		  var botResponse = "Current Temperature: " + weatherinfo.main.temp + " degrees in " + weatherinfo.name + "\nCurrent Conditions: " + weatherinfo.weather[0].main + "(" + weatherinfo.weather[0].description + ")\nTodays low temperature: " + weatherinfo.main.temp_min + "\nTodays high temperature: " + weatherinfo.main.temp_max + "\nWind Speed: " + weatherinfo.wind.speed + " MPH"
+		  	
 	  }
   });
 
