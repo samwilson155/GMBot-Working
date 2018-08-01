@@ -132,7 +132,7 @@ function respond() {
 function postMessage() {
   var botResponse, options, body, botReq;
 
-  botResponse = 'Phi Alpha to tHe brother who just dished a jawn above! Also, le bo nasty!'.concat(cool());
+  botResponse = 'Phi Alpha to tHe brother who just dished a jawn above! Also, le bo nasty!/n/n'.concat(cool());
 
   options = {
     hostname: 'api.groupme.com',
