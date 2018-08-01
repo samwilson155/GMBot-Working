@@ -117,7 +117,7 @@ function respond() {
     this.res.end();
   }
   
-    if(request.text && botRegex11.test(request.text)) {
+/*    if(request.text && botRegex11.test(request.text)) {
     this.res.writeHead(200);
     postMessage6();
     this.res.end();
@@ -126,6 +126,7 @@ function respond() {
     this.res.writeHead(200);
     this.res.end();
   }
+*/
 }
 
 function postMessage() {
@@ -303,7 +304,7 @@ function postMessage5() {
   botReq.end(JSON.stringify(body));
 }
 
-function postMessage6() {
+/*function postMessage6() {
   var botResponse, options, body, botReq;
 
   const request2 = require('request');
@@ -350,5 +351,6 @@ function postMessage6() {
   });
   botReq.end(JSON.stringify(body));
 }
+*/
 
 exports.respond = respond;
